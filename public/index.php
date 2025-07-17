@@ -1,6 +1,6 @@
 <?php
 
-$url = $_GET['url'] ?? 'home';
+$url = $_GET['url'] ?? 'inicio';
 $url = rtrim($url, '/');
 
 $routes = require __DIR__ . '/../config/routes.php';

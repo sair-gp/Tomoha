@@ -9,13 +9,10 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav me-auto">
         <li class="nav-item">
-          <a class="nav-link active" href="/"><i class="fas fa-home me-1"></i> Inicio</a>
+          <a class="nav-link" href="/"><i class="fas fa-home me-1"></i> Inicio</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/catalogo"><i class="fas fa-book me-1"></i> Catálogo</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/actividades"><i class="fas fa-calendar-alt me-1"></i> Actividades</a>
         </li>
       </ul>
       <div class="d-flex">

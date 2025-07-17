@@ -13,10 +13,10 @@
       </div>
       <div class="col-md-4 text-md-end">
         <div class="d-flex justify-content-end gap-3">
-          <a href="https://maps.google.com" class="text-white text-decoration-none small">
+          <a href="https://maps.app.goo.gl/7q7fXzge7NF7LSXb6" target="_blank" class="text-white text-decoration-none small">
             <i class="fas fa-map-marker-alt me-1 text-danger"></i> Ubicación
           </a>
-          <a href="https://github.com/tu-usuario/sigb" class="text-white text-decoration-none small">
+          <a href="https://github.com/afdeeez/sigb" target="_blank" class="text-white text-decoration-none small">
             <i class="fab fa-github me-1 text-light"></i> GitHub
           </a>
         </div>
