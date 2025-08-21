@@ -19,7 +19,7 @@
         <a href="/login" class="btn btn-outline-light me-2">
           <i class="fas fa-sign-in-alt me-1"></i> Iniciar sesión
         </a>
-        <a href="/registro" class="btn btn-primary">
+        <a href="/signup" class="btn btn-primary">
           <i class="fas fa-user-plus me-1"></i> Registrarse
         </a>
       </div>

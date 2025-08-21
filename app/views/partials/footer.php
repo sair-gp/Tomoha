@@ -5,7 +5,7 @@
         <div class="d-flex align-items-center">
           <i class="fas fa-clock fa-lg me-2 text-warning"></i>
           <div>
-            <span class="small">Lun-Vie: 8:00 A.M - 05:30 P.M | Sáb: 10:00 A.M - 02:00 P.M</span>
+            <span class="small">Lun-Vie: 8:00 A.M - 04:00 P.M</span>
           </div>
         </div>
       </div>
@@ -24,7 +24,3 @@
     </div>
   </div>
 </footer>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>

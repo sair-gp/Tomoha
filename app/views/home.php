@@ -1,4 +1,16 @@
-<?php include __DIR__ . '/partials/head.php'; ?>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIGB - </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/assets/css/global.css">
+    <link rel="stylesheet" href="/assets/css/home.css">
+    <link rel="icon" href="/assets/img/favicon.ico" type="image/x-icon">
+</head>
+<body>
 <?php include __DIR__ . '/partials/navbar.php'; ?>
 
 <main class="container-fluid">
@@ -27,10 +39,10 @@
           <i class="fas fa-fire text-warning me-2"></i><span class="carousel-title-text">Libros populares</span>
         </h3>
         <div class="carousel-controls-mobile">
-          <button type="button" id="prevBtnMobile" aria-label="Anterior">
+          <button type="button" id="prevBtnMobile" aria-label="Anterior" data-bs-target="#booksCarousel" data-bs-slide="prev">
             <span class="carousel-control-prev-icon"></span>
           </button>
-          <button type="button" id="nextBtnMobile" aria-label="Siguiente">
+          <button type="button" id="nextBtnMobile" aria-label="Siguiente" data-bs-target="#booksCarousel" data-bs-slide="next">
             <span class="carousel-control-next-icon"></span>
           </button>
         </div>
@@ -84,10 +96,10 @@
               <!-- Libro 1 -->
               <div class="col-md-3 custom-card-width">
                 <div class="card bg-white text-dark border h-100">
-                  <img src="/assets/img/books/libro7.jpg" class="card-img-top" alt="Portada del libro">
+                  <img src="/assets/img/books/libro6.jpg" class="card-img-top" alt="Portada del libro">
                   <div class="card-body p-2">
-                    <h5 class="card-title fs-6">Libro Nuevo 1</h5>
-                    <p class="card-text small">Autor Z</p>
+                    <h5 class="card-title fs-6">Harry Potter</h5>
+                    <p class="card-text small">J. K. Rowling</p>
                     <span class="badge bg-success">Disponible</span>
                   </div>
                 </div>
@@ -97,7 +109,7 @@
                 <div class="card bg-white text-dark border h-100">
                   <img src="/assets/img/books/libro5.jpg" class="card-img-top" alt="Portada del libro">
                   <div class="card-body p-2">
-                    <h5 class="card-title fs-6">José Rodríguez "El Puma"</h5>
+                    <h5 class="card-title fs-6">El Puma</h5>
                     <p class="card-text small">José Rodríguez</p>
                     <span class="badge bg-success">Disponible</span>
                   </div>
@@ -108,8 +120,8 @@
                 <div class="card bg-white text-dark border h-100">
                   <img src="/assets/img/books/libro6.jpg" class="card-img-top" alt="Portada del libro">
                   <div class="card-body p-2">
-                    <h5 class="card-title fs-6">Libro Nuevo 3</h5>
-                    <p class="card-text small">Autor Z</p>
+                    <h5 class="card-title fs-6">Harry Potter</h5>
+                    <p class="card-text small">J. K. Rowling</p>
                     <span class="badge bg-warning">Último ejemplar</span>
                   </div>
                 </div>
@@ -165,5 +177,9 @@
   </div>
 </main>
 
-<script src="../assets/js/home.js"></script>
+
 <?php include __DIR__ . '/partials/footer.php'; ?>
+<script src="../assets/js/home.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

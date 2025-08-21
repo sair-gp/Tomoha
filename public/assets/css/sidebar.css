@@ -1,0 +1,118 @@
+/* Sidebar base */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 220px; /* más compacto */
+  background: #fff;
+  border-right: 1px solid #dee2e6;
+  display: flex;
+  flex-direction: column;
+  z-index: 1050;
+  font-size: 0.9rem;
+}
+
+/* Secciones */
+.sidebar .menu-section {
+  border-bottom: 1px solid #f1f1f1;
+}
+.sidebar .menu-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: #6c757d;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+.sidebar .menu-title i {
+  transition: transform 0.3s;
+}
+.sidebar .menu-title i.rotate {
+  transform: rotate(-180deg);
+}
+
+/* Items ocultables */
+.menu-items {
+  display: none;
+  flex-direction: column;
+}
+.menu-items.show {
+  display: flex;
+}
+
+/* Links */
+.sidebar .menu-item {
+  display: block;
+  padding: 0.4rem 1rem; /* más compacto */
+  color: #333;
+  text-decoration: none;
+  border-left: 3px solid transparent;
+  transition: all 0.2s ease-in-out;
+}
+.sidebar .menu-item:hover {
+  background: #f8f9fa;
+  border-left: 3px solid var(--primary-color);
+  color: var(--primary-color);
+}
+.sidebar .menu-item.active {
+  background: #f1f3f5;
+  border-left: 3px solid var(--primary-color);
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+/* Perfil */
+.sidebar .profile {
+  margin-top: auto;
+  padding: 0.75rem;
+  border-top: 1px solid #dee2e6;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  position: relative;
+}
+.sidebar .profile img {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.sidebar .profile-info .name {
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+.sidebar .profile-info .role {
+  font-size: 0.75rem;
+  color: #6c757d;
+}
+
+/* Dropdown perfil */
+.profile-dropdown {
+  position: absolute;
+  bottom: 55px;
+  right: 10px;
+  background: #fff;
+  border: 1px solid #dee2e6;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  display: none;
+  flex-direction: column;
+  min-width: 160px;
+  z-index: 1100;
+}
+.profile-dropdown a {
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  color: #333;
+  font-size: 0.85rem;
+}
+.profile-dropdown a:hover {
+  background: #f8f9fa;
+  color: var(--primary-color);
+}
+.profile.show-dropdown .profile-dropdown {
+  display: flex;
+}

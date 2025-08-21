@@ -1,6 +1,3 @@
-<?php
-  $page = isset($_GET['url']) ? $_GET['url'] : 'inicio';
-?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -9,8 +6,8 @@
     <title>SIGB - </title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="/assets/css/global.css">
-    <link rel="stylesheet" href="/assets/css/<?= $page ?>.css">
+    <link rel="stylesheet" href="/assets/css/sidebar.css">
     <link rel="icon" href="/assets/img/favicon.ico" type="image/x-icon">
 </head>
 <body>
+<?php include __DIR__ . '/partials/sidebar.php'; ?>

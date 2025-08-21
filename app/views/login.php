@@ -1,4 +1,17 @@
-<?php include __DIR__ . '/partials/head.php'; ?>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIGB - </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.22.4/sweetalert2.css">
+    <link rel="stylesheet" href="/assets/css/global.css">
+    <link rel="stylesheet" href="/assets/css/login.css">
+    <link rel="icon" href="/assets/img/favicon.ico" type="image/x-icon">
+</head>
+<body>
 <?php include __DIR__ . '/partials/navbar.php'; ?>
 
 <div class="background-overlay"></div>
@@ -17,10 +30,15 @@
           <label for="password">Contraseña</label>
           <input type="password" class="form-control" id="password" name="password" required>
         </div>
-        <button type="submit" class="btn btn-primary">Ingresar</button>
+        <button type="submit" class="btn btn-primary" id="button">Ingresar</button>
       </form>
     </div>
   </div>
 </div>
 
 <?php include __DIR__ . '/partials/footer.php'; ?>
+<script src="../assets/js/login.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.22.4/sweetalert2.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
