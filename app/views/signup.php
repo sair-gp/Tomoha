@@ -13,7 +13,8 @@
 <body>
 <?php include __DIR__ . '/partials/navbar.php'; ?>
 
-<div class="signup-form-container">
+<div class="background">
+  <div class="signup-form-container">
   <div class="signup-form-box">
     <div class="form-stepper">
       <!-- Header del stepper -->
@@ -43,20 +44,20 @@
             </div>
             <div class="form-field-group col-md-6">
               <label for="apellido" class="form-label">Apellido</label>
-              <input type="text" id="apellido" class="form-control">
+              <input type="text" id="apellido" class="form-control" required>
             </div>
           </div>
 
           <div class="form-row">
             <!-- Grupo de cédula -->
             <div class="form-field-group">
-              <label class="form-label">Documento de identidad *</label>
+              <label class="form-label">Cédula de identidad</label>
               <div class="input-combo">
                 <select class="form-control">
                   <option value="V">V</option>
                   <option value="E">E</option>
                 </select>
-                <input type="text" class="form-control" required>
+                <input type="text" id="numero-cedula" class="form-control" required>
               </div>
             </div>
 
@@ -69,7 +70,7 @@
                   <option value="0412">0412</option>
                   <option value="0416">0416</option>
                 </select>
-                <input type="tel" class="form-control">
+                <input type="tel" id="numero-telefono" class="form-control" required>
               </div>
             </div>
           </div>
@@ -78,16 +79,16 @@
         <!-- Paso 2 -->
         <div class="step-panel" data-step="2">
           <div class="form-field-group">
-            <label for="email" class="form-label">Correo electrónico *</label>
+            <label for="email" class="form-label">Correo electrónico</label>
             <input type="email" id="email" class="form-control" placeholder="tu@correo.com" required>
           </div>
           <div class="form-row">
             <div class="form-field-group col-md-6">
-              <label for="password" class="form-label">Contraseña *</label>
+              <label for="password" class="form-label">Contraseña</label>
               <input type="password" id="password" class="form-control" placeholder="Mínimo 8 caracteres" required>
             </div>
             <div class="form-field-group col-md-6">
-              <label for="confirm_password" class="form-label">Confirmar contraseña *</label>
+              <label for="confirm_password" class="form-label">Confirmar contraseña</label>
               <input type="password" id="confirm_password" class="form-control" placeholder="Repite tu contraseña" required>
             </div>
           </div>
@@ -96,7 +97,7 @@
         <!-- Paso 3 -->
         <div class="step-panel" data-step="3">
           <div class="form-field-group">
-            <label for="pregunta" class="form-label">Pregunta de seguridad *</label>
+            <label for="pregunta" class="form-label">Pregunta de seguridad</label>
             <select id="pregunta" class="form-control" required>
               <option value="" disabled selected>Selecciona una pregunta</option>
               <option>¿Nombre de tu primera mascota?</option>
@@ -105,7 +106,7 @@
             </select>
           </div>
           <div class="form-field-group">
-            <label for="respuesta" class="form-label">Respuesta *</label>
+            <label for="respuesta" class="form-label">Respuesta</label>
             <input type="text" id="respuesta" class="form-control" required>
           </div>
         </div>
@@ -126,55 +127,10 @@
     </div>
   </div>
 </div>
+</div>
 
 <?php include __DIR__ . '/partials/footer.php'; ?>
 <script src="../assets/js/signup.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    // Implementa la lógica del stepper aquí
-    const steps = document.querySelectorAll('.stepper-step');
-    const panels = document.querySelectorAll('.step-panel');
-    const prevBtn = document.querySelector('.btn-prev');
-    const nextBtn = document.querySelector('.btn-next');
-    const submitBtn = document.querySelector('.btn-submit');
-    
-    let currentStep = 0;
-
-    function updateButtons() {
-        prevBtn.disabled = currentStep === 0;
-        nextBtn.style.display = currentStep === steps.length - 1 ? 'none' : 'flex';
-        submitBtn.style.display = currentStep === steps.length - 1 ? 'flex' : 'none';
-    }
-
-    function showStep(stepIndex) {
-        steps.forEach((step, index) => {
-            step.classList.toggle('active', index === stepIndex);
-        });
-        
-        panels.forEach((panel, index) => {
-            panel.classList.toggle('active', index === stepIndex);
-        });
-        
-        currentStep = stepIndex;
-        updateButtons();
-    }
-
-    nextBtn.addEventListener('click', () => {
-        if (currentStep < steps.length - 1) {
-            showStep(currentStep + 1);
-        }
-    });
-
-    prevBtn.addEventListener('click', () => {
-        if (currentStep > 0) {
-            showStep(currentStep - 1);
-        }
-    });
-
-    // Inicializar
-    showStep(0);
-});
-</script>
 </body>
 </html>
