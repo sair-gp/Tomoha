@@ -6,6 +6,7 @@
     <title>SIGB - Registro</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.22.4/sweetalert2.css">
     <link rel="stylesheet" href="/assets/css/global.css">
     <link rel="stylesheet" href="/assets/css/signup.css">
     <link rel="icon" href="/assets/img/favicon.ico" type="image/x-icon">
@@ -53,7 +54,7 @@
             <div class="form-field-group">
               <label class="form-label">Cédula de identidad</label>
               <div class="input-combo">
-                <select class="form-control">
+                <select id="tipo-cedula" class="form-control">
                   <option value="V">V</option>
                   <option value="E">E</option>
                 </select>
@@ -65,7 +66,7 @@
             <div class="form-field-group">
               <label class="form-label">Teléfono</label>
               <div class="input-combo">
-                <select class="form-control">
+                <select id="codigo-telefono" class="form-control">
                   <option value="0424">0424</option>
                   <option value="0412">0412</option>
                   <option value="0416">0416</option>
@@ -89,7 +90,7 @@
             </div>
             <div class="form-field-group col-md-6">
               <label for="confirm_password" class="form-label">Confirmar contraseña</label>
-              <input type="password" id="confirm_password" class="form-control" placeholder="Repite tu contraseña" required>
+              <input type="password" id="confirm-password" class="form-control" placeholder="Repite tu contraseña" required>
             </div>
           </div>
         </div>
@@ -120,7 +121,7 @@
         <button type="button" class="form-btn btn-next">
           Siguiente <i class="fas fa-arrow-right"></i>
         </button>
-        <button type="submit" class="form-btn btn-submit" style="display: none;">
+        <button type="submit" id="btn-submit" class="form-btn btn-submit" style="display: none;">
           <i class="fas fa-check-circle"></i> Registrarse
         </button>
       </div>
@@ -131,6 +132,7 @@
 
 <?php include __DIR__ . '/partials/footer.php'; ?>
 <script src="../assets/js/signup.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.22.4/sweetalert2.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

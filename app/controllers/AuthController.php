@@ -16,6 +16,16 @@ class AuthController {
         require __DIR__ . '/../views/signup.php';
     }
 
+    public function register() {
+        $json = file_get_contents('php://input');
+        $data = json_decode($json, true);
+
+        $response = $this->authModel->register($data);
+
+        header('Content-Type: application/json');
+        echo json_encode($response);
+    }
+
     public function login() {
         $json = file_get_contents('php://input');
         $data = json_decode($json, true);

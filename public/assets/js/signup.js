@@ -6,9 +6,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const submitBtn = document.querySelector('.btn-submit');
     
     let currentStep = 0;
-    let hasValidated = false; // Bandera para controlar cuándo mostrar errores
+    let hasValidated = false;
 
-    // Configuración de límites de caracteres por campo
     const characterLimits = {
         '#nombre': 25,
         '#apellido': 25,
@@ -16,81 +15,52 @@ document.addEventListener('DOMContentLoaded', function() {
         '#numero-telefono': 7
     };
 
-    // Función para aplicar límites de caracteres
     function applyCharacterLimits() {
-        // Para campos de texto (nombre y apellido) - solo letras y espacios
         document.querySelectorAll('#nombre, #apellido').forEach(input => {
             input.addEventListener('input', function() {
-                // Eliminar números y caracteres especiales, mantener solo letras y espacios
                 this.value = this.value.replace(/[^a-zA-ZáéíóúÁÉÍÓÚñÑ\s]/g, '');
-                
-                // Limitar longitud máxima
                 const maxLength = characterLimits[`#${this.id}`];
-                if (this.value.length > maxLength) {
-                    this.value = this.value.substring(0, maxLength);
-                }
+                if (this.value.length > maxLength) this.value = this.value.substring(0, maxLength);
             });
         });
 
-        // Para campo de cédula - solo números
         const cedulaInput = document.querySelector('#numero-cedula');
         if (cedulaInput) {
             cedulaInput.addEventListener('input', function() {
-                // Permitir solo números
                 this.value = this.value.replace(/\D/g, '');
-                
-                // Limitar longitud máxima
                 const maxLength = characterLimits[`#${this.id}`];
-                if (this.value.length > maxLength) {
-                    this.value = this.value.substring(0, maxLength);
-                }
+                if (this.value.length > maxLength) this.value = this.value.substring(0, maxLength);
             });
         }
 
-        // Para campo de teléfono - solo números
         const telefonoInput = document.querySelector('#numero-telefono');
         if (telefonoInput) {
             telefonoInput.addEventListener('input', function() {
-                // Permitir solo números
                 this.value = this.value.replace(/\D/g, '');
-                
-                // Limitar longitud máxima
                 const maxLength = characterLimits[`#${this.id}`];
-                if (this.value.length > maxLength) {
-                    this.value = this.value.substring(0, maxLength);
-                }
+                if (this.value.length > maxLength) this.value = this.value.substring(0, maxLength);
             });
         }
     }
 
-    // Función para validar los campos del paso actual
     function validateCurrentStep() {
         const currentPanel = panels[currentStep];
-        const requiredInputs = currentPanel.querySelectorAll('input[required], select[required]');
+        let requiredInputs = currentPanel.querySelectorAll('input[required], select[required]');
+        
         let isValid = true;
 
         requiredInputs.forEach(input => {
-            // Solo mostrar errores si ya se intentó validar
             if (hasValidated) {
-                // Remueve mensajes de error existentes
                 const existingError = input.parentNode.querySelector('.invalid-feedback');
-                if (existingError) {
-                    existingError.remove();
-                }
-                
-                // Resetea estilos de error
+                if (existingError) existingError.remove();
                 input.classList.remove('is-invalid');
             }
-            
-            // Verifica si el campo está vacío
+
             if (!input.value.trim()) {
                 isValid = false;
-                
-                // Solo mostrar errores si ya se intentó validar
+
                 if (hasValidated) {
                     input.classList.add('is-invalid');
-                    
-                    // Agrega mensaje de error
                     const errorDiv = document.createElement('div');
                     errorDiv.className = 'invalid-feedback';
                     errorDiv.textContent = 'Este campo es obligatorio';
@@ -109,67 +79,124 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function showStep(stepIndex) {
-        steps.forEach((step, index) => {
-            step.classList.toggle('active', index === stepIndex);
-        });
-        
-        panels.forEach((panel, index) => {
-            panel.classList.toggle('active', index === stepIndex);
-        });
-        
+        steps.forEach((step, index) => step.classList.toggle('active', index === stepIndex));
+        panels.forEach((panel, index) => panel.classList.toggle('active', index === stepIndex));
         currentStep = stepIndex;
         updateButtons();
-        hasValidated = false; // Resetear la bandera al cambiar de paso
+        hasValidated = false;
     }
 
     nextBtn.addEventListener('click', () => {
-        if (currentStep < steps.length - 1) {
-            hasValidated = true; // Activar la bandera para mostrar errores
-            // Validar campos antes de avanzar
-            if (validateCurrentStep()) {
-                showStep(currentStep + 1);
-            } else {
-                // Efecto visual para indicar error
-                nextBtn.classList.add('btn-error');
-                setTimeout(() => {
-                    nextBtn.classList.remove('btn-error');
-                }, 600);
+    hasValidated = true;
+
+    if (!validateCurrentStep()) {
+        nextBtn.classList.add('btn-error');
+        setTimeout(() => nextBtn.classList.remove('btn-error'), 600);
+        return;
+    }
+
+        if (currentStep === 1) {
+                const passwordInput = document.getElementById('password');
+                const confirmInput = document.getElementById('confirm-password');
+                const emailInput = document.getElementById('email');
+
+                const password = passwordInput.value.trim();
+                const confirmPassword = confirmInput.value.trim();
+                const email = emailInput.value.trim();
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            [emailInput, passwordInput, confirmInput].forEach(input => {
+                const existingError = input.parentNode.querySelector('.invalid-feedback');
+                if (existingError) existingError.remove();
+                input.classList.remove('is-invalid');
+            });
+
+            if (!emailRegex.test(email)) {
+                emailInput.classList.add('is-invalid');
+                const errorDiv = document.createElement('div');
+                errorDiv.className = 'invalid-feedback';
+                errorDiv.textContent = 'Ingrese un correo válido';
+                emailInput.parentNode.appendChild(errorDiv);
+                return;
+            }
+
+            if (password !== confirmPassword) {
+                passwordInput.classList.add('is-invalid');
+                confirmInput.classList.add('is-invalid');
+                const errorDiv = document.createElement('div');
+                errorDiv.className = 'invalid-feedback';
+                errorDiv.textContent = 'Las contraseñas no coinciden';
+                passwordInput.parentNode.appendChild(errorDiv);
+                return;
             }
         }
-    });
 
-    prevBtn.addEventListener('click', () => {
-        if (currentStep > 0) {
-            showStep(currentStep - 1);
-        }
-    });
+    showStep(currentStep + 1);
+});
 
-    // Validación en tiempo real pero SIN mostrar errores
+
+    prevBtn.addEventListener('click', () => showStep(currentStep - 1));
+
     document.querySelectorAll('input[required], select[required]').forEach(input => {
-        input.addEventListener('blur', function() {
-            // Solo validar sin mostrar errores
+        input.addEventListener('blur', () => { if (hasValidated) validateCurrentStep(); });
+        input.addEventListener('input', () => {
             if (hasValidated) {
-                validateCurrentStep();
-            }
-        });
-        
-        // Limpiar errores al empezar a escribir
-        input.addEventListener('input', function() {
-            if (hasValidated) {
-                this.classList.remove('is-invalid');
-                const existingError = this.parentNode.querySelector('.invalid-feedback');
-                if (existingError) {
-                    existingError.remove();
-                }
-                // Validar de nuevo para ver si ya está completo
+                input.classList.remove('is-invalid');
+                const existingError = input.parentNode.querySelector('.invalid-feedback');
+                if (existingError) existingError.remove();
                 validateCurrentStep();
             }
         });
     });
 
-    // Aplicar límites de caracteres
     applyCharacterLimits();
-
-    // Inicializar
     showStep(0);
+
+    submitBtn.addEventListener('click', async function(event) {
+        event.preventDefault();
+        hasValidated = true;
+
+        if (!validateCurrentStep()) return;
+
+        const formData = {
+            first_name: document.getElementById('nombre').value.trim(),
+            last_name: document.getElementById('apellido').value.trim(),
+            tipo_cedula: document.getElementById('tipo-cedula').value,
+            numero_cedula: document.getElementById('numero-cedula').value.trim(),
+            codigo_telefono: document.getElementById('codigo-telefono').value,
+            numero_telefono: document.getElementById('numero-telefono').value.trim(),
+            email: document.getElementById('email').value.trim(),
+            password: document.getElementById('password').value.trim(),
+            confirm_password: document.getElementById('confirm-password').value.trim(),
+            pregunta: document.getElementById('pregunta').value,
+            respuesta: document.getElementById('respuesta').value.trim()
+        };
+
+        try {
+            const response = await fetch('auth/signup', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData)
+            });
+
+            const data = await response.json();
+            if (data.status === 'success') {
+                window.location.href = '/';
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    text: data.message,
+                    toast: true,
+                    position: 'top',
+                    showConfirmButton: false,
+                    showCloseButton: true,
+                    timer: 10000,
+                    timerProgressBar: true,
+                });
+            }
+
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    });
 });
