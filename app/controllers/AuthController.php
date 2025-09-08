@@ -26,6 +26,13 @@ class AuthController {
         echo json_encode($response);
     }
 
+    public function getSecurityQuestions() {
+        $response = $this->authModel->getSecurityQuestions();
+
+        header('Content-Type: application/json');
+        echo json_encode($response);
+    }
+
     public function login() {
         $json = file_get_contents('php://input');
         $data = json_decode($json, true);
@@ -53,5 +60,32 @@ class AuthController {
     public function logout() {
         session_destroy();
         header('Location: /');
+    }
+
+    public function resetPassword() {
+        $json = file_get_contents('php://input');
+        $data = json_decode($json, true);
+
+        header('Content-Type: application/json');
+
+        switch ($data['step']) {
+            case 1:
+                $response = $this->authModel->getSecurityQuestionByEmail($data);
+                echo json_encode($response);
+                break;
+            case 2:
+                $response = $this->authModel->verifySecurityAnswer($data);
+                echo json_encode($response);
+                break;
+            case 3:
+                $response = $this->authModel->updatePassword($data);
+                echo json_encode($response);
+                break;
+            default:
+                echo json_encode([
+                    "status" => "error",
+                    "message" => "Paso inválido."
+                ]);
+        }
     }
 }

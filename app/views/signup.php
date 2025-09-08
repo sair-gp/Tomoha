@@ -55,8 +55,8 @@
               <label class="form-label">Cédula de identidad</label>
               <div class="input-combo">
                 <select id="tipo-cedula" class="form-control">
-                  <option value="V">V</option>
-                  <option value="E">E</option>
+                  <option value="1">V</option>
+                  <option value="2">E</option>
                 </select>
                 <input type="text" id="numero-cedula" class="form-control" required>
               </div>
@@ -98,17 +98,14 @@
         <!-- Paso 3 -->
         <div class="step-panel" data-step="3">
           <div class="form-field-group">
-            <label for="pregunta" class="form-label">Pregunta de seguridad</label>
-            <select id="pregunta" class="form-control" required>
+            <label for="security_question" class="form-label">Pregunta de seguridad</label>
+            <select id="security_question" class="form-control" required>
               <option value="" disabled selected>Selecciona una pregunta</option>
-              <option>¿Nombre de tu primera mascota?</option>
-              <option>¿Ciudad donde naciste?</option>
-              <option>¿Mejor amigo de la infancia?</option>
             </select>
           </div>
           <div class="form-field-group">
             <label for="respuesta" class="form-label">Respuesta</label>
-            <input type="text" id="respuesta" class="form-control" required>
+            <input type="text" id="security_answer" class="form-control" required>
           </div>
         </div>
       </div>

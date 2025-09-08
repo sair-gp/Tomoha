@@ -9,10 +9,12 @@ return [
     'auth/login'  => 'AuthController@login',         // procesar inicio de sesión
     'auth/signup' => 'AuthController@register',      // procesar registro de usuario
     'logout'      => 'AuthController@logout',        // cerrar sesión
+    'auth/reset-password' => 'AuthController@resetPassword', // procesar recuperación de contraseña
 
     // Panel
     'panel'       => 'PanelController@index',        // mostrar vista de panel principal
 
     // Testing / debugging
-    'data'        => 'AuthController@getSessionData', 
+    'data'        => 'AuthController@getSessionData',
+    'auth/security-questions' => 'AuthController@getSecurityQuestions',
 ];

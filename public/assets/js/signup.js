@@ -152,6 +152,8 @@ document.addEventListener('DOMContentLoaded', function() {
     applyCharacterLimits();
     showStep(0);
 
+    fetchSecurityQuestions();
+
     submitBtn.addEventListener('click', async function(event) {
         event.preventDefault();
         hasValidated = true;
@@ -168,8 +170,8 @@ document.addEventListener('DOMContentLoaded', function() {
             email: document.getElementById('email').value.trim(),
             password: document.getElementById('password').value.trim(),
             confirm_password: document.getElementById('confirm-password').value.trim(),
-            pregunta: document.getElementById('pregunta').value,
-            respuesta: document.getElementById('respuesta').value.trim()
+            security_question: document.getElementById('security_question').value,
+            security_answer: document.getElementById('security_answer').value.trim()
         };
 
         try {
@@ -200,3 +202,20 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+async function fetchSecurityQuestions() {
+    try {
+        const response = await fetch('auth/security-questions');
+        const questions = await response.json();
+        const select = document.getElementById('security_question');
+
+        questions.forEach(question => {
+            const option = document.createElement('option');
+            option.value = question.id;
+            option.textContent = question.question_text;
+            select.appendChild(option);
+        });
+    } catch (error) {
+        console.error('Error fetching security questions:', error);
+    }
+}

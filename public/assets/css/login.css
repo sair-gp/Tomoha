@@ -55,8 +55,8 @@ body, html {
 .login-box img {
   display: block;
   margin: 0 auto 1rem auto;
-  max-width: 100%;
-  padding-top: 20px;
+  max-width: 90%;
+  padding-top: 15px;
   height: auto;
 }
 
@@ -79,6 +79,14 @@ body, html {
 .login-box .btn-primary {
   width: 100%;
   border-radius: 4px;
+}
+#password-recovery {
+  display: block;
+  text-align: right;
+  margin-bottom: 10px;
+  color: #007bff;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 @media (max-width: 768px) {

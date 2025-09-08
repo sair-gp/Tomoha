@@ -1,0 +1,232 @@
+:root {
+    --primary-color: #3498db;
+    --error-color: #dc3545;
+}
+
+.form-stepper {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.stepper-header {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    margin-bottom: 1rem;
+}
+
+.stepper-header::after {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: #e9ecef;
+    z-index: 1;
+}
+
+.stepper-step {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+}
+
+.step-indicator {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #e9ecef;
+    color: #6c757d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    border: 3px solid white;
+    transition: all 0.3s ease;
+}
+
+.step-label {
+    font-size: 0.85rem;
+    color: #6c757d;
+    font-weight: 500;
+    text-align: center;
+}
+
+.stepper-step.active .step-indicator {
+    background: var(--primary-color);
+    color: white;
+    transform: scale(1.1);
+}
+
+.stepper-step.active .step-label {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.stepper-body {
+    position: relative;
+    min-height: 100px;
+    transition: min-height 0.4s ease;
+}
+
+.step-panel {
+    position: absolute;
+    width: 100%;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.4s ease;
+    pointer-events: none;
+}
+
+.step-panel.active {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: all;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1.5rem;
+    border-top: 1px solid #eee;
+    padding-top: 1rem;
+}
+
+.form-btn {
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s;
+    border: none;
+}
+
+.btn-prev {
+    background: #f8f9fa;
+    color: #495057;
+    border: 1px solid #dee2e6;
+}
+
+.btn-next {
+    background: var(--primary-color);
+    color: white;
+}
+
+.btn-submit {
+    background: #28a745;
+    color: white;
+}
+
+.form-field-group {
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #333;
+    text-align: left;
+}
+
+.form-control {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    transition: border-color 0.3s;
+    box-sizing: border-box;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+}
+
+.is-invalid {
+    border-color: var(--error-color) !important;
+    padding-right: calc(1.5em + 0.75rem);
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%23dc3545'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right calc(0.375em + 0.1875rem) center;
+    background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+}
+
+.invalid-feedback {
+    display: block;
+    width: 100%;
+    margin-top: 0.35rem;
+    font-size: 0.85em;
+    color: var(--error-color);
+    position: absolute;
+    bottom: -20px;
+    left: 0;
+    text-align: left;
+}
+
+.btn-error {
+    animation: shake 0.6s cubic-bezier(.36,.07,.19,.97) both;
+    background-color: var(--error-color) !important;
+}
+
+@keyframes shake {
+    10%, 90% { transform: translateX(-1px); }
+    20%, 80% { transform: translateX(2px); }
+    30%, 50%, 70% { transform: translateX(-4px); }
+    40%, 60% { transform: translateX(4px); }
+}
+
+.swal2-popup {
+    padding: 1.5rem !important;
+    overflow-y: visible !important;
+}
+
+.swal2-html-container {
+    overflow: visible !important;
+    margin-bottom: 0 !important;
+}
+
+@media (max-width: 576px) {
+    .form-actions {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .form-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .stepper-header {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: flex-start;
+    }
+
+    .stepper-step {
+        flex-direction: row;
+        gap: 1rem;
+        width: 100%;
+        align-items: center;
+    }
+
+    .stepper-header::after {
+        display: none;
+    }
+    
+    .stepper-body {
+        min-height: 240px !important;
+    }
+    
+    .swal2-popup {
+        padding: 1rem !important;
+    }
+}
