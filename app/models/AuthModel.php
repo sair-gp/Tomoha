@@ -86,21 +86,19 @@ class AuthModel extends Database {
                     "user" => [
                         "id" => $user['id'],
                         "profile_id" => $user['profile_id'],
-                        "role" => $user['role'] // Agregar el rol si lo necesitas
+                        "role" => $user['role']
                     ],
                 ];
             } else {
-                // Log para debugging (opcional)
                 error_log("Login fallido: Password incorrecto para email: " . $email);
             }
         } else {
-            // Log para debugging (opcional)
             error_log("Login fallido: Email no encontrado: " . $email);
         }
         
         return [
             "status" => "error",
-            "message" => "Datos de acceso incorrectos."
+            "message" => "Datos incorrectos."
         ];
     }
 

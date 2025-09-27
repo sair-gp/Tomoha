@@ -29,9 +29,9 @@ function iniciarStepperRecuperacion() {
     
     // Ajustar altura del contenedor según el step
     if (index === 0) {
-      stepperBody.style.minHeight = '100px'; // Altura reducida para step 1
+      stepperBody.style.minHeight = '65px'; // Altura reducida para step 1
     } else {
-      stepperBody.style.minHeight = '180px'; // Altura aumentada para steps 2 y 3
+      stepperBody.style.minHeight = '170px'; // Altura aumentada para steps 2 y 3
     }
   }
 
@@ -226,7 +226,7 @@ const recoveryHTML = `
       <div class="step-panel active" data-step="0">
         <div class="form-field-group">
           <label for="recovery-email" class="form-label">Correo electrónico</label>
-          <input type="email" id="recovery-email" class="form-control" required>
+          <input type="email" id="recovery-email" class="form-control" placeholder="tu@correo.com" required>
         </div>
       </div>
 

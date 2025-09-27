@@ -69,4 +69,36 @@ document.addEventListener('DOMContentLoaded', () => {
   const firstSlide = carousel.querySelector('.carousel-item.active');
   const firstTitle = firstSlide.getAttribute('data-title');
   animateFadeIn(firstTitle);
+  loadUpcomingActivities();
 });
+
+// Próximas actividades
+async function loadUpcomingActivities() {
+  try {
+    const res = await fetch("api/activities/upcoming");
+    const data = await res.json();
+    if (data.status !== "success") throw new Error(data.message);
+
+    const container = document.getElementById("upcoming-activities");
+    container.innerHTML = data.data.map(activity => `
+      <div class="activity-card p-2">
+        <div class="d-flex justify-content-between align-items-center mb-1">
+          <span class="fw-semibold small text-dark">${activity.description}</span>
+        </div>
+
+        <div class="d-flex flex-column gap-1 ps-1">
+          <div class="d-flex align-items-center text-muted small">
+            <i class="fas fa-user me-2 text-secondary"></i>
+            <span><strong>Organiza:</strong> ${activity.organizer}</span>
+          </div>
+          <div class="d-flex align-items-center text-muted small">
+            <i class="fas fa-clock me-2 text-secondary"></i>
+            <span><strong>Fecha:</strong> ${formatDateToText(activity.start_date)} - ${formatTime(activity.start_time)}</span>
+          </div>
+        </div>
+      </div>
+    `).join("");
+  } catch (err) {
+    console.error("Error cargando actividades próximas:", err);
+  }
+}

@@ -14,7 +14,16 @@ return [
     // Panel
     'panel'       => 'PanelController@index',        // mostrar vista de panel principal
 
+    // Users
+    'usuarios'    => 'UserController@index',         // mostrar vista de gestión de usuarios
+
+    // Activities
+    'actividades' => 'ActivitiesController@index',   // mostrar vista de gestión de actividades
+    'api/activities' => 'ActivitiesController@get',   // obtener lista de actividades
+    'api/activities/upcoming' => 'ActivitiesController@upcoming', // obtener próximas actividades
+
     // Testing / debugging
     'data'        => 'AuthController@getSessionData',
     'auth/security-questions' => 'AuthController@getSecurityQuestions',
+    'api/users' => 'UserController@getAllUsers',
 ];

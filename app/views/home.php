@@ -138,47 +138,16 @@
       <h3 class="mb-1 border-bottom pb-1">
         <i class="fas fa-calendar-alt text-info me-2"></i>Próximas actividades
       </h3>
-      <div class="d-flex flex-column gap-2">
-        <div class="activity-card p-2">
-          <div class="d-flex justify-content-between align-items-center">
-            <span class="fw-semibold small">Club de lectura</span>
-            <small>15 Jul</small>
-          </div>
-          <p class="mb-1 small text-muted">"Cien años de soledad"</p>
-          <small class="text-muted d-block">06:00 P.M - Biblioteca Central</small>
-        </div>
-        <div class="activity-card p-2">
-          <div class="d-flex justify-content-between align-items-center">
-            <span class="fw-semibold small">Taller de escritura</span>
-            <small>20 Jul</small>
-          </div>
-          <p class="mb-1 small text-muted">Narrativa moderna</p>
-          <small class="text-muted d-block">04:00 P.M - Sala Conferencias</small>
-        </div>
-        <div class="activity-card p-2">
-          <div class="d-flex justify-content-between align-items-center">
-            <span class="fw-semibold small">Presentación de libro</span>
-            <small>25 Jul</small>
-          </div>
-          <p class="mb-1 small text-muted">Autor local</p>
-          <small class="text-muted d-block">07:00 P.M - Auditorio Principal</small>
-        </div>
-        <div class="activity-card p-2">
-          <div class="d-flex justify-content-between align-items-center">
-            <span class="fw-semibold small">Presentación de libro</span>
-            <small>25 Jul</small>
-          </div>
-          <p class="mb-1 small text-muted">Autor local</p>
-          <small class="text-muted d-block">07:00 P.M - Auditorio Principal</small>
-        </div>
+      <div id="upcoming-activities" class="d-flex flex-column gap-2">
+        <!-- Se insertan con JS -->
       </div>
     </div>
-
   </div>
 </main>
 
 
 <?php include __DIR__ . '/partials/footer.php'; ?>
+<script src="../assets/js/formatUtils.js"></script>
 <script src="../assets/js/home.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>

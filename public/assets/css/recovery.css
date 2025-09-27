@@ -194,6 +194,10 @@
     margin-bottom: 0 !important;
 }
 
+.swal2-title {
+    padding: 0;
+}
+
 @media (max-width: 576px) {
     .form-actions {
         flex-direction: column;

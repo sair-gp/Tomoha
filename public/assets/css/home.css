@@ -90,7 +90,7 @@ main {
 }
 
 .activity-card {
-  margin-top: 12px;
+  margin-top: 10px;
   background-color: #ffffff;
   border: 1px solid #dee2e6;
   border-radius: 0.5rem;
@@ -103,6 +103,13 @@ main {
 .activity-card:hover {
   transform: translateY(-3px);
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.fw-semibold {
+  white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: pointer;
 }
 
 @media (min-width: 992px) {
