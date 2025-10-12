@@ -155,7 +155,7 @@ class AuthModel extends Database {
         } else {
             return [
                 "status" => "error",
-                "message" => "Correo electrónico no encontrado."
+                "message" => "Correo electrónico no encontrado"
             ];
         }
     }

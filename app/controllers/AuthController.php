@@ -9,6 +9,7 @@ class AuthController {
     }
 
     public function index() {
+        session_destroy();
         require __DIR__ . '/../views/login.php';
     }
 

@@ -22,3 +22,8 @@ function formatDateToText(dateStr) {
 
   return `${parseInt(day, 10)} de ${monthName}`;
 }
+
+function formatTimeToMinutes(timeString) {
+    const [hours, minutes] = timeString.split(':').map(Number);
+    return hours * 60 + minutes;
+}
