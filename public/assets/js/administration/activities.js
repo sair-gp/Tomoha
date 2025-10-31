@@ -7,11 +7,12 @@ $(document).ready(function() {
         lengthChange: false,
         info: true,
         ordering: true,
-        pageLength: 5,
+        paging: true,
+        pageLength: 7,
         columnDefs: [
             { orderable: false, targets: 7 }
         ],
-        dom: 't',
+        dom: 'tp',
         language: {
             url: 'https://cdn.datatables.net/plug-ins/1.13.6/i18n/es-ES.json'
         },
@@ -274,28 +275,26 @@ async function saveActivity(activityData) {
             body: JSON.stringify(activityData)
         });
 
-        if (!response.ok) throw new Error('Error al guardar la actividad');
-
         const result = await response.json();
         
-        if (result.status === "success") {
+        if (result.success) {
             Swal.fire({
                 title: '¡Éxito!',
-                text: 'Actividad agregada correctamente',
+                text: result.message || 'Actividad agregada correctamente',
                 icon: 'success',
                 confirmButtonColor: '#3498db'
             });
             
             loadData();
         } else {
-            throw new Error(result.message || 'Error al guardar');
+            throw new Error(result.error || 'Error al guardar');
         }
 
     } catch (error) {
         console.error('Error guardando actividad:', error);
         Swal.fire({
             title: 'Error',
-            text: 'No se pudo guardar la actividad. Intenta de nuevo.',
+            text: error.message || 'No se pudo guardar la actividad. Intenta de nuevo.',
             icon: 'error',
             confirmButtonColor: '#dc3545'
         });
@@ -319,7 +318,7 @@ async function loadData() {
         if (!response.ok) throw new Error('Error al obtener las actividades');
 
         const result = await response.json();
-        if (result.status !== "success") throw new Error('Respuesta inválida del servidor');
+        if (!result.success) throw new Error('Respuesta inválida del servidor');
 
         const activities = result.data || [];
 

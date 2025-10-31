@@ -27,7 +27,9 @@ body {
 .main-container {
     flex: 1;
     margin-left: var(--sidebar-width);
-    padding: 20px;
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
     transition: margin-left 0.3s;
 }
 
@@ -71,7 +73,7 @@ body {
 }
 
 .card-body {
-    padding: 20px;
+    padding: 15px 20px 5px 20px !important;
 }
 
 .filters {
@@ -145,6 +147,7 @@ table.dataTable {
     table-layout: fixed !important;
     border-collapse: collapse !important;
     margin-top: 15px !important;
+    margin-bottom: 0 !important;
     width: 100% !important;
 }
 
@@ -152,7 +155,6 @@ table.dataTable th:nth-child(1),
 table.dataTable td:nth-child(1) {
   width: 95px;
 }
-
 
 table.dataTable thead th {
     color: var(--secondary-color);
@@ -276,6 +278,89 @@ td {
     cursor: pointer;
 }
 
+/* DataTables Wrapper - Espacios reducidos */
+.dataTables_wrapper {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+.dataTables_info {
+    padding: 5px 0 !important;
+    margin: 0 !important;
+}
+
+.dataTables_paginate {
+    display: flex !important;
+    justify-content: center !important;
+    flex-wrap: nowrap !important;
+    margin: 0 !important;
+    padding: 10px 0 10px 0 !important
+}
+
+.dataTables_paginate .pagination {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    gap: 4px !important;
+    margin: 0 !important;
+}
+
+/* Paginación */
+#Table_paginate .paginate_button {
+    background: #fff !important;
+    border: 1px solid #dee2e6 !important;
+    color: #007bff !important;
+    margin: 0 2px !important;
+    display: inline-block !important;
+    float: none !important;
+    padding: 6px 12px !important;
+    text-decoration: none !important;
+    border-radius: 4px !important;
+    outline: none !important;
+}
+
+#Table_paginate .paginate_button.current {
+    background: #6c757d !important;
+    color: white !important;
+    border-color: #6c757d !important;
+    cursor: default !important;
+}
+
+#Table_paginate .paginate_button.disabled,
+#Table_paginate .paginate_button.disabled:hover {
+    background: #f8f9fa !important;
+    color: #6c757d !important;
+    border-color: #dee2e6 !important;
+    cursor: default !important;
+    opacity: 0.6 !important;
+}
+
+#Table_paginate .paginate_button:hover {
+    background: #e9ecef !important;
+    color: #0056b3 !important;
+}
+
+#Table_paginate .paginate_button.current:hover,
+#Table_paginate .paginate_button.disabled:hover {
+    background: #6c757d !important;
+    color: white !important;
+}
+
+#Table_paginate {
+    text-align: center !important;
+    white-space: nowrap !important;
+}
+
+#Table_paginate .paginate_button,
+#Table_paginate .paginate_button * {
+    text-decoration: none !important;
+    text-decoration-line: none !important;
+}
+
+#Table_paginate .paginate_button:focus {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
 /* Responsive */
 @media (max-width: 992px) {
     .filters {
@@ -306,6 +391,10 @@ td {
     
     .actions {
         flex-wrap: wrap;
+    }
+    
+    .card-body {
+        padding: 10px 15px 5px 15px !important;
     }
 }
 

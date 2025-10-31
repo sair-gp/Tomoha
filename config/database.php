@@ -1,20 +1,19 @@
 <?php
-
-$database = new Database();
-
 class Database {
     private $server = "localhost";
-    private $username = "root";
-    private $password  = "";
+    private $username = "sigb_user";
+    private $password  = "Sqx48172";
     private $database = "sigb";
     public $connection;
     private $sql;
     private $charset = "utf8";
 
-    public function __construct() {
+    public function __construct() {        
         $this->connection = new mysqli($this->server, $this->username, $this->password, $this->database);
         if ($this->connection->connect_error) {
-            die("Error de conexión: " . $this->connection->connect_error);
+            $this->connection = null;
+        } else {
+            $this->connection->set_charset($this->charset);
         }
     }
 

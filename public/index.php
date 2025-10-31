@@ -2,6 +2,7 @@
 
 $url = $_GET['url'] ?? 'inicio';
 $url = rtrim($url, '/');
+$method = $_SERVER['REQUEST_METHOD'];
 
 $routes = require __DIR__ . '/../config/routes.php';
 
@@ -15,28 +16,46 @@ function matchRoute($routePattern, $url) {
     return false;
 }
 
-foreach ($routes as $route => $handler) {
-    if ($route === $url) {
-        $params = [];
-    } else {
-        $params = matchRoute($route, $url);
-    }
-
-    if ($params !== false) {
-        list($controllerName, $method) = explode('@', $handler);
-        $controllerPath = "../app/controllers/{$controllerName}.php";
+function handleRoute($handler, $params) {
+    list($controllerName, $method) = explode('@', $handler);
+    $controllerPath = "../app/controllers/{$controllerName}.php";
+    
+    if (file_exists($controllerPath)) {
+        require_once $controllerPath;
+        $controller = new $controllerName();
         
-        if (file_exists($controllerPath)) {
-            require_once $controllerPath;
-            $controller = new $controllerName();
-            
-            $reflection = new ReflectionMethod($controllerName, $method);
-            $orderedParams = [];
-            foreach ($reflection->getParameters() as $param) {
-                $orderedParams[] = $params[$param->name] ?? null;
+        $reflection = new ReflectionMethod($controllerName, $method);
+        $orderedParams = [];
+        foreach ($reflection->getParameters() as $param) {
+            $orderedParams[] = $params[$param->name] ?? null;
+        }
+        
+        call_user_func_array([$controller, $method], $orderedParams);
+        return true;
+    }
+    return false;
+}
+
+foreach ($routes as $route => $routeConfig) {
+    // Si es una ruta simple (string)
+    if (is_string($routeConfig)) {
+        if ($route === $url) {
+            $params = [];
+            handleRoute($routeConfig, $params);
+            exit;
+        } else {
+            $params = matchRoute($route, $url);
+            if ($params !== false) {
+                handleRoute($routeConfig, $params);
+                exit;
             }
-            
-            call_user_func_array([$controller, $method], $orderedParams);
+        }
+    } 
+    // Si es una ruta de API con métodos HTTP
+    elseif (is_array($routeConfig)) {
+        $params = matchRoute($route, $url);
+        if ($params !== false && isset($routeConfig[$method])) {
+            handleRoute($routeConfig[$method], $params);
             exit;
         }
     }
