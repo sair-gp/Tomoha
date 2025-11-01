@@ -62,4 +62,4 @@ foreach ($routes as $route => $routeConfig) {
 }
 
 http_response_code(404);
-echo "Página no encontrada";
+include "../app/views/404.php";
