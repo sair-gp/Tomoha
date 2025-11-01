@@ -111,10 +111,10 @@
     <div class="book"></div>
     <div class="book"></div>
     <div class="book"></div>
+    <div class="book"></div>
+    <div class="book"></div>
+    <div class="book"></div>
     <div class="slot"></div>
-    <div class="book"></div>
-    <div class="book"></div>
-    <div class="book"></div>
   </div>
 
   <div class="message">
